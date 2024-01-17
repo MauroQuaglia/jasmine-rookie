@@ -29,18 +29,15 @@ class RomanNumerals {
     }
 
     static fromRoman(string) {
-        let romans = [...string]; // XVII
+        let romans = [...string];
 
         let result = 0;
         for (let i = 0; i < romans.length - 1; i++) {
-            let sign = Math.sign(
-                RD.get(romans[i]) - RD.get(romans[i + 1])
-            );
-            if (sign >= 0) {
+            let sign = Math.sign(RD.get(romans[i]) - RD.get(romans[i + 1]));
+            if (sign >= 0)
                 result += RD.get(romans[i]);
-            } else {
+            else
                 result -= RD.get(romans[i]);
-            }
         }
         result += RD.get(romans[romans.length - 1]);
 
