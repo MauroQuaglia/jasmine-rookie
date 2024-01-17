@@ -20,7 +20,9 @@ describe('The observed pin', function () {
 
     describe('getPINs', function () {
         it('should return possible pin for one digit', function () {
-            //expect(getPINs('0')).toEqual(jasmine.arrayWithExactContents(['09']));
+            expect(getPINs('0')).toEqual(jasmine.arrayWithExactContents(['0', '8']));
+            expect(getPINs('123')).toEqual(jasmine.arrayWithExactContents(
+                ['112', '113', '116', '122', '123', '126', '132', '133', '136', '152', '153', '156', '212', '213', '216', '222', '223', '226', '232', '233', '236', '252', '253', '256', '412', '413', '416', '422', '423', '426', '432', '433', '436', '452', '453', '456']));
         });
     });
 });
