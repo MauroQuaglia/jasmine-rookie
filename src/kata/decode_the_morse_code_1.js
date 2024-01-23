@@ -12,5 +12,7 @@ const MORSE_CODE = new Map([
 ])
 
 let decodeMorse = function (morseCode) {
-    return morseCode.split('   ').reduce((sentence, word) => (sentence + ' ' + word.split(' ').map(letter => MORSE_CODE.get(letter)).join('').trim()), '');
+    return morseCode.split('   ').reduce(
+        (sentence, word) => (sentence + word.split(' ').map(letter => MORSE_CODE.get(letter)).join('') + ' '), ''
+    ).trim();
 }
