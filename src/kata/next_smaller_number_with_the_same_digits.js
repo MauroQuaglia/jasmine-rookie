@@ -3,23 +3,24 @@
 
 function nextSmaller(number) {
     let numberArray = [...number.toString()];
+    let firstDigit = numberArray.shift();
+
+    let digits
+
+
 
     if (numberArray.length === 1)
         return -1;
 
-    //number.sort((a,b) => ());
+    let result = Number(numberArray.sort(customSort).join(''));
 
-    return number;
+    return result;
+    //return (result === number) ? -1 : result;
 }
 
 let customSort = function (a, b) {
     let [newA, newB] = [a, b];
-    if (a === 0 && b === 1) {
-        newA = b;
-        newB = a;
-    }
-
-    if (a === 1 && b === 0) {
+    if (a + b === 1) {
         newA = b;
         newB = a;
     }
