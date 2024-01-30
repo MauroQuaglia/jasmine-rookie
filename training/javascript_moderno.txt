@@ -1,3 +1,4 @@
 // https://www.udemy.com/course/javascript-es6-guida-ecmascript-2015-corso-italiano
 
 * Sezione 1 fatta.
+* Sezione 2, sto guardando visual studio code. la parte del live.

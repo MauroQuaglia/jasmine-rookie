@@ -4,26 +4,18 @@
 
 function nextSmaller(number) {
     let digits = [...number.toString()].sort();
+    let digitsCount = digits.length;
 
     for (let i = 1; i <= number; i++) {
         let current = number - i;
         let currentDigits = [...current.toString()];
-        if (same(digits, currentDigits)) {
+
+        if (digitsCount !== currentDigits.length)
+            return -1
+
+        if (digits.join('') === currentDigits.sort().join(''))
             return current
-        }
     }
 
     return -1;
 }
-
-function same(sortedArray, array) {
-    if (sortedArray.length !== array.length) {
-        return false
-    }
-
-    return sortedArray.join('') === array.sort().join('');
-}
-
-// 21 20 19 18
-
-// 531
