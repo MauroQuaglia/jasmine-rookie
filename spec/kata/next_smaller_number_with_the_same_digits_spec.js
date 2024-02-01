@@ -1,29 +1,36 @@
 describe('Next Smaller Number With The Same Digits', function () {
 
-    describe('nextSmaller', function () {
-        it('single digit', function () {
-            expect(nextSmaller(1)).toEqual(-1);
+    describe('moveForward', function () {
+        it('trivial', function () {
+            expect(['a'].moveForward(0)).toEqual(['a'])
         });
 
-        it('same digits', function () {
-            expect(nextSmaller(11)).toEqual(-1);
+        it('switch', function () {
+            expect(['a', 'b'].moveForward(1)).toEqual(['b', 'a'])
         });
 
-        it('not exist', function () {
-            expect(nextSmaller(9)).toEqual(-1);
-            expect(nextSmaller(111)).toEqual(-1);
-            expect(nextSmaller(135)).toEqual(-1);
-            expect(nextSmaller(1027)).toEqual(-1);
+        it('forward element', function () {
+            expect(['a', 'b', 'c'].moveForward(2)).toEqual(['a', 'c', 'b'])
+            expect(['a', 'c', 'b'].moveForward(1)).toEqual(['c', 'a', 'b'])
+        });
+    });
+
+    describe('less', function () {
+        it('trivial', function () {
+            expect(less(['1'], ['1'])).toBeFalse();
+            expect(less(['1'], ['2'])).toBeTrue();
         });
 
-        it('exists', function () {
-            expect(nextSmaller(21)).toEqual(12);
-            expect(nextSmaller(521)).toEqual(512);
-            expect(nextSmaller(531)).toEqual(513);
-            expect(nextSmaller(541)).toEqual(514);
-            expect(nextSmaller(591)).toEqual(519);
-            expect(nextSmaller(2071)).toEqual(2017);
+        it('two digits', function () {
+            expect(less(['1', '1'], ['1', '1'])).toBeFalse();
+            expect(less(['1', '3'], ['2', '4'])).toBeTrue();
         });
+
+        it('zero', function () {
+            expect(less(['0', '1'], ['1', '0'])).toBeFalse();
+        });
+
+
     });
 
 });

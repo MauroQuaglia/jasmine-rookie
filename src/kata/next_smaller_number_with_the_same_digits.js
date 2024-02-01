@@ -2,20 +2,32 @@
 
 'use strict'
 
+Array.prototype.moveForward = function (index) {
+    let copy = Array.from(this);
+
+    let elementRemoved = copy.splice(index, 1)[0];
+    copy.splice(--index, 0, elementRemoved);
+    return copy;
+}
+
+function less(result, original) {
+    if (result[0] === '0') return false;
+
+    original = Number(original.join(''));
+    result = Number(result.join(''));
+
+    return (result < original);
+}
+
+// 8453
 function nextSmaller(number) {
-    let digits = [...number.toString()].sort();
-    let digitsCount = digits.length;
+    let digits = [...number.toString()];
 
-    for (let i = 1; i <= number; i++) {
-        let current = number - i;
-        let currentDigits = [...current.toString()];
+    if (digits.length === 1)
+        return -1;
 
-        if (digitsCount !== currentDigits.length)
-            return -1
+    for (let i = digits.length - 1; i > 0; i--) {
+        let result = digits.moveForward(i);
 
-        if (digits.join('') === currentDigits.sort().join(''))
-            return current
     }
-
-    return -1;
 }
