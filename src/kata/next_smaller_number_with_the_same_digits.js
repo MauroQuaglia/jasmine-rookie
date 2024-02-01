@@ -10,7 +10,7 @@ Array.prototype.moveForward = function (index) {
     return copy;
 }
 
-function less(result, original) {
+function IsLess(result, original) {
     if (result[0] === '0') return false;
 
     original = Number(original.join(''));
@@ -23,11 +23,12 @@ function less(result, original) {
 function nextSmaller(number) {
     let digits = [...number.toString()];
 
-    if (digits.length === 1)
-        return -1;
-
     for (let i = digits.length - 1; i > 0; i--) {
         let result = digits.moveForward(i);
-
+        if (IsLess(result, digits)) {
+            return Number(result.join(''));
+        }
     }
+
+    return -1
 }

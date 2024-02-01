@@ -17,20 +17,45 @@ describe('Next Smaller Number With The Same Digits', function () {
 
     describe('less', function () {
         it('trivial', function () {
-            expect(less(['1'], ['1'])).toBeFalse();
-            expect(less(['1'], ['2'])).toBeTrue();
+            expect(IsLess(['1'], ['1'])).toBeFalse();
+            expect(IsLess(['1'], ['2'])).toBeTrue();
         });
 
         it('two digits', function () {
-            expect(less(['1', '1'], ['1', '1'])).toBeFalse();
-            expect(less(['1', '3'], ['2', '4'])).toBeTrue();
+            expect(IsLess(['1', '1'], ['1', '1'])).toBeFalse();
+            expect(IsLess(['1', '3'], ['2', '4'])).toBeTrue();
         });
 
         it('zero', function () {
-            expect(less(['0', '1'], ['1', '0'])).toBeFalse();
+            expect(IsLess(['0', '1'], ['1', '0'])).toBeFalse();
         });
 
 
+    });
+
+    describe('nextSmaller', function () {
+        it('one digit', function () {
+            expect(nextSmaller(1)).toEqual(-1);
+            expect(nextSmaller(9)).toEqual(-1);
+        });
+
+        it('two digits', function () {
+            expect(nextSmaller(10)).toEqual(-1);
+            expect(nextSmaller(11)).toEqual(-1);
+            expect(nextSmaller(12)).toEqual(-1);
+
+            expect(nextSmaller(20)).toEqual(-1);
+            expect(nextSmaller(21)).toEqual(12);
+            expect(nextSmaller(22)).toEqual(-1);
+
+            expect(nextSmaller(31)).toEqual(13);
+            expect(nextSmaller(32)).toEqual(23);
+            expect(nextSmaller(33)).toEqual(-1);
+        });
+
+        it('acceptance', function () {
+            expect(nextSmaller(8453)).toEqual(8435);
+        });
     });
 
 });
