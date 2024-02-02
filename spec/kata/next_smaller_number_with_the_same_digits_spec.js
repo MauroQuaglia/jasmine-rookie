@@ -55,6 +55,18 @@ describe('Next Smaller Number With The Same Digits', function () {
 
         it('acceptance', function () {
             expect(nextSmaller(8453)).toEqual(8435);
+            expect(nextSmaller(907)).toEqual(790);
+            expect(nextSmaller(531)).toEqual(513);
+            expect(nextSmaller(513)).toEqual(351);
+            expect(nextSmaller(315)).toEqual(153);
+            expect(nextSmaller(135)).toEqual(-1);
+            expect(nextSmaller(2071)).toEqual(2017);
+            expect(nextSmaller(1027)).toEqual(-1);
+            expect(nextSmaller(414)).toEqual(144);
+
+            expect(nextSmaller(123456798)).toEqual(123456789);
+            expect(nextSmaller(123456789)).toEqual(-1);
+            expect(nextSmaller(1234567908)).toEqual(1234567890);
         });
     });
 

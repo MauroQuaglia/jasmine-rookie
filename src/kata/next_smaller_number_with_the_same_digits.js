@@ -19,14 +19,18 @@ function IsLess(result, original) {
     return (result < original);
 }
 
-// 8453
 function nextSmaller(number) {
     let digits = [...number.toString()];
+    let digitsLength = digits.length - 1;
 
-    for (let i = digits.length - 1; i > 0; i--) {
-        let result = digits.moveForward(i);
-        if (IsLess(result, digits)) {
-            return Number(result.join(''));
+    for (let j = digitsLength; j > 0; j--) {
+        let result = Array.from(digits);
+
+        for (let i = 1; i <= j; i++) {
+            result = result.moveForward(j - i + 1);
+            if (IsLess(result, digits)) {
+                return Number(result.join(''));
+            }
         }
     }
 
