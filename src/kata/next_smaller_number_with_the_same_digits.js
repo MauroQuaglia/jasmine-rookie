@@ -29,7 +29,12 @@ function nextSmaller(number) {
         for (let i = 1; i <= j; i++) {
             result = result.moveForward(j - i + 1);
             if (IsLess(result, digits)) {
-                return Number(result.join(''));
+                if (i === j) {
+                    let firstDigit = result.shift();
+                    return Number(firstDigit + result.sort().reverse().join(''));
+                } else {
+                    return Number(result.join(''));
+                }
             }
         }
     }
