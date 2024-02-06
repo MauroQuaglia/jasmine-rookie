@@ -19,6 +19,7 @@ function IsLess(result, original) {
     return (result < original);
 }
 
+//16204
 function nextSmaller(number) {
     let digits = [...number.toString()];
     let digitsLength = digits.length - 1;
@@ -28,16 +29,15 @@ function nextSmaller(number) {
 
         for (let i = 1; i <= j; i++) {
             result = result.moveForward(j - i + 1);
-            if (IsLess(result, digits)) {
-                if (i === j) {
-                    let firstDigit = result.shift();
-                    return Number(firstDigit + result.sort().reverse().join(''));
-                } else {
-                    return Number(result.join(''));
-                }
+            let first = result.slice(0, j - i);
+            let digit = result[j - i];
+            let second = result.slice(j - i + 1);
+
+            let r = first.concat(digit).concat(second.sort().reverse());
+            if (IsLess(r, digits)) {
+                return Number(r.join(''));
             }
         }
     }
-
-    return -1
+    return -1;
 }
