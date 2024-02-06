@@ -23,6 +23,7 @@ function IsLess(result, original) {
 function nextSmaller(number) {
     let digits = [...number.toString()];
     let digitsLength = digits.length - 1;
+    let results = [];
 
     for (let j = digitsLength; j > 0; j--) {
         let result = Array.from(digits);
@@ -35,9 +36,14 @@ function nextSmaller(number) {
 
             let r = first.concat(digit).concat(second.sort().reverse());
             if (IsLess(r, digits)) {
-                return Number(r.join(''));
+                results.push(Number(r.join('')));
             }
         }
     }
-    return -1;
+
+    if (results.length === 0) {
+        return -1;
+    } else {
+        return results.sort().pop();
+    }
 }
