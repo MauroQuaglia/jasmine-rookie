@@ -2,7 +2,8 @@
 
 'use strict'
 
-function nextSmaller(number) {
+// Semplice ma ha problemi di performance
+function nextSmaller2(number) {
     let digits = [...number.toString()].sort();
     let digitsCount = digits.length;
 

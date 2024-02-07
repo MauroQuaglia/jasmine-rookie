@@ -19,7 +19,6 @@ function IsLess(result, original) {
     return (result < original);
 }
 
-//16204
 function nextSmaller(number) {
     let digits = [...number.toString()];
     let digitsLength = digits.length - 1;
